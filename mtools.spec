@@ -4,8 +4,8 @@ Summary(fr):	Programmes pour accéder aux disques DOS sans avoir à les monter
 Summary(pl):	Dostêp do dysków DOSa bez montowania
 Summary(tr):	Baðlama (mount) yapmadan DOS disklerine eriþim saðlar
 Name:		mtools
-Version:	3.9.6
-Release:	5
+Version:	3.9.7
+Release:	1
 License:	GPL
 Group:		Utilities/File
 Group(pl):	Narzêdzia/Pliki

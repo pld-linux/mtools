@@ -26,8 +26,6 @@ BuildRequires:	autoconf
 BuildRequires:	texinfo
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		_sysconfdir	/etc
-
 %description
 Mtools is a collection of utilities to access MS-DOS disks from Unix
 without mounting them. It supports Win'95 style long file names, OS/2
@@ -101,30 +99,34 @@ Daemon para acesso remoto a um drive de disquete.
 %{__autoconf}
 %configure
 
-%{__make} MYCFLAGS="%{rpmcflags} -Wall"
+%{__make} \
+	MYCFLAGS="%{rpmcflags} -Wall"
 
-(makeinfo --force mtools.texi; touch mtools.*)
+makeinfo --force mtools.texi
+touch mtools.*
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_prefix},%{_sysconfdir}} \
 	$RPM_BUILD_ROOT%{_prefix}/X11R6/bin
 
-%{__make} install DESTDIR=$RPM_BUILD_ROOT
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT
+
 install %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}
 
 mv -f $RPM_BUILD_ROOT%{_bindir}/floppyd* $RPM_BUILD_ROOT%{_prefix}/X11R6/bin
 
 bzip2 -dc %{SOURCE2} | tar xf - -C $RPM_BUILD_ROOT%{_mandir}
 
+%clean
+rm -rf $RPM_BUILD_ROOT
+
 %post
 [ ! -x /usr/sbin/fix-info-dir ] || /usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
 
 %postun
 [ ! -x /usr/sbin/fix-info-dir ] || /usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
-
-%clean
-rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)

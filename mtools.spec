@@ -5,7 +5,7 @@ Summary(pl):	Dostêp do dysków DOSa bez montowania
 Summary(tr):	Baðlama (mount) yapmadan DOS disklerine eriþim saðlar
 Name:		mtools
 Version:	3.9.1
-Release:	3
+Release:	4
 Copyright:	GPL
 Group:		Utilities/File
 Group(pl):	Narzêdzia/Pliki
@@ -80,7 +80,7 @@ rm -rf $RPM_BUILD_ROOT
 %post
 /usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
 
-%preun
+%postun
 /usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
 
 %files

@@ -8,6 +8,7 @@ Version:     3.9.1
 Release:     2
 Copyright:   GPL
 Group:       Utilities/File
+Group(pl):   Narzêdzia/Pliki
 Source0:     http://www.tux.org/pub/tux/knaff/mtools/%{name}-%{version}.tar.gz 
 Source1:     mtools.conf
 URL:         http://www.tux.org/pub/tux/knaff/mtools/
@@ -45,7 +46,8 @@ disklerini, ZIP/JAZ disklerini ve 2m disklerini destekler.
 %setup -q
 
 %build
-CFLAGS="$RPM_OPT_FLAGS" ./configure \
+CFLAGS="$RPM_OPT_FLAGS" \
+./configure \
 	--prefix=/usr \
 	--sysconfdir=/etc
 make
@@ -58,26 +60,29 @@ install -d $RPM_BUILD_ROOT/{usr,etc}
 make prefix=$RPM_BUILD_ROOT/usr install
 
 install %{SOURCE1} $RPM_BUILD_ROOT/etc
-gzip -9f $RPM_BUILD_ROOT/usr/info/*
+gzip -9nf $RPM_BUILD_ROOT/usr/info/* \
+	$RPM_BUILD_ROOT/usr/{man1,man5}/* \
+	Changelog README Release.notes
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %post
-/sbin/install-info /usr/info/mtools.info.gz /usr/info/dir
+/sbin/install-info /usr/info/mtools.info.gz /etc/info-dir
 
 %preun
 if [ "$1" = 0 ]; then
-	/sbin/install-info --delete /usr/info/mtools.info.gz /usr/info/dir
+	/sbin/install-info --delete /usr/info/mtools.info.gz /etc/info-dir
 fi
 
 %files
-%defattr(644, root, root, 755)
-%config /etc/mtools.conf
-%doc Changelog README Release.notes
-%attr(755, root, root) /usr/bin/*
-%attr(644, root,  man) /usr/man/man[15]/*
+%defattr(644,root,root,755)
+%doc {Changelog,README,Release.notes}.gz
+
+%attr(755,root,root) /usr/bin/*
+/usr/man/man[15]/*
 /usr/info/*
+%config /etc/mtools.conf
 
 %changelog
 * Fri Sep 25 1998 Marcin 'Qrczak' Kowalczyk <qrczak@knm.org.pl>

@@ -5,14 +5,14 @@ Summary(pl): Dostêp do dysków DOSa bez montowania
 Summary(tr): Baðlama (mount) yapmadan DOS disklerine eriþim saðlar
 Name:        mtools
 Version:     3.9.1
-Release:     2
+Release:     3
 Copyright:   GPL
 Group:       Utilities/File
 Group(pl):   Narzêdzia/Pliki
 Source0:     http://www.tux.org/pub/tux/knaff/mtools/%{name}-%{version}.tar.gz 
 Source1:     mtools.conf
 Patch0:      mtools-info.patch
-Patch1:      mtools-xref.patch
+Patch1:      mtools-mzip.patch
 URL:         http://www.tux.org/pub/tux/knaff/mtools/
 Prereq:      /sbin/install-info
 Buildroot:   /tmp/%{name}-%{version}-root
@@ -50,11 +50,15 @@ disklerini, ZIP/JAZ disklerini ve 2m disklerini destekler.
 %patch1 -p1
 
 %build
-CFLAGS="$RPM_OPT_FLAGS" \
+CFLAGS="$RPM_OPT_FLAGS -Wall" \
 ./configure \
 	--prefix=/usr \
 	--sysconfdir=/etc
-make
+
+make MYCFLAGS="$RPM_OPT_FLAGS -Wall"
+
+(makeinfo --force mtools.texi; touch mtools.*)
+
 strip mtools mkmanifest
 
 %install
@@ -65,7 +69,7 @@ make prefix=$RPM_BUILD_ROOT/usr install
 
 install %{SOURCE1} $RPM_BUILD_ROOT/etc
 gzip -9nf $RPM_BUILD_ROOT/usr/info/* \
-	$RPM_BUILD_ROOT/usr/{man1,man5}/* \
+	$RPM_BUILD_ROOT/usr/man/{man1,man5}/* \
 	Changelog README Release.notes
 
 %clean
@@ -89,6 +93,18 @@ fi
 %config /etc/mtools.conf
 
 %changelog
+* Mon Apr 12 1999 Piotr Czerwiñski <pius@pld.org.pl>
+  [3.9.1-3]
+- added Group(pl),
+- added missing mtools-mzip.patch,
+- fixed passing $RPM_OPT_FLAGS during compile,
+- fixed info entry (mtools-info.patch),
+- force making info pages,
+- removed man group from man pages,
+- added gzipping man pages and documentation,
+- fixed {un}registering info pages,
+- cosmetic changes for common l&f.
+
 * Fri Sep 25 1998 Marcin 'Qrczak' Kowalczyk <qrczak@knm.org.pl>
   [3.9.1-2]
 - updated Source and URL addresses,

@@ -11,6 +11,8 @@ Group:       Utilities/File
 Group(pl):   Narzêdzia/Pliki
 Source0:     http://www.tux.org/pub/tux/knaff/mtools/%{name}-%{version}.tar.gz 
 Source1:     mtools.conf
+Patch0:      mtools-info.patch
+Patch1:      mtools-xref.patch
 URL:         http://www.tux.org/pub/tux/knaff/mtools/
 Prereq:      /sbin/install-info
 Buildroot:   /tmp/%{name}-%{version}-root
@@ -44,6 +46,8 @@ disklerini, ZIP/JAZ disklerini ve 2m disklerini destekler.
 
 %prep
 %setup -q
+%patch0 -p1
+%patch1 -p1
 
 %build
 CFLAGS="$RPM_OPT_FLAGS" \

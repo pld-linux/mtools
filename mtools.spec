@@ -4,8 +4,8 @@ Summary(fr):	Programmes pour accéder aux disques DOS sans avoir à les monter
 Summary(pl):	Dostêp do dysków DOSa bez montowania
 Summary(tr):	Baðlama (mount) yapmadan DOS disklerine eriþim saðlar
 Name:		mtools
-Version:	3.9.1
-Release:	5
+Version:	3.9.6
+Release:	4
 License:	GPL
 Group:		Utilities/File
 Group(pl):	Narzêdzia/Pliki
@@ -14,6 +14,7 @@ Source1:	mtools.conf
 Patch0:		mtools-info.patch
 Patch1:		mtools-mzip.patch
 Patch2:		mtools-DESTDIR.patch
+Patch3:		mtools-paths.patch
 URL:		http://www.tux.org/pub/tux/knaff/mtools/
 BuildRequires:	texinfo
 Prereq:		/usr/sbin/fix-info-dir
@@ -53,9 +54,11 @@ disklerini, ZIP/JAZ disklerini ve 2m disklerini destekler.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
 autoconf
+LDFLAGS="-s"; export LDFLAGS
 %configure
 
 make MYCFLAGS="$RPM_OPT_FLAGS -Wall"

@@ -5,13 +5,14 @@ Summary(pl):	Dostêp do dysków DOSa bez montowania
 Summary(tr):	Baðlama (mount) yapmadan DOS disklerine eriþim saðlar
 Name:		mtools
 Version:	3.9.8
-Release:	3
+Release:	4
 License:	GPL
 Group:		Applications/File
 Group(de):	Applikationen/Datei
 Group(pl):	Aplikacje/Pliki
 Source0:	http://www.tux.org/pub/tux/knaff/mtools/%{name}-%{version}.tar.gz
 Source1:	%{name}.conf
+Source2:	%{name}-non-english-man-pages.tar.bz2
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-DESTDIR.patch
 Patch2:		%{name}-paths.patch
@@ -92,6 +93,8 @@ install %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}
 
 mv -f $RPM_BUILD_ROOT%{_bindir}/floppyd* $RPM_BUILD_ROOT%{_prefix}/X11R6/bin
 
+bzip2 -dc %{SOURCE2} | tar xf - -C $RPM_BUILD_ROOT%{_mandir}
+
 gzip -9nf Changelog README Release.notes
 
 %post
@@ -109,6 +112,12 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/*
 %config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/mtools.conf
 %{_mandir}/man[15]/m*
+%lang(de) %{_mandir}/de/man[15]/m*
+%lang(es) %{_mandir}/es/man[15]/m*
+%lang(fi) %{_mandir}/fi/man[15]/m*
+%lang(fr) %{_mandir}/fr/man[15]/m*
+%lang(it) %{_mandir}/it/man[15]/m*
+%lang(pl) %{_mandir}/pl/man[15]/m*
 %{_infodir}/*info*
 
 %files floppyd

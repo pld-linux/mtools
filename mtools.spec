@@ -68,19 +68,19 @@ install -d $RPM_BUILD_ROOT/{usr,etc}
 make prefix=$RPM_BUILD_ROOT/usr install
 
 install %{SOURCE1} $RPM_BUILD_ROOT/etc
-gzip -9nf $RPM_BUILD_ROOT/usr/info/* \
-	$RPM_BUILD_ROOT/usr/man/{man1,man5}/* \
+gzip -9nf $RPM_BUILD_ROOT%{_infodir}/* \
+	$RPM_BUILD_ROOT%{_mandir}/{man1,man5}/* \
 	Changelog README Release.notes
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %post
-/sbin/install-info /usr/info/mtools.info.gz /etc/info-dir
+/sbin/install-info %{_infodir}/mtools.info.gz /etc/info-dir
 
 %preun
 if [ "$1" = 0 ]; then
-	/sbin/install-info --delete /usr/info/mtools.info.gz /etc/info-dir
+	/sbin/install-info --delete %{_infodir}/mtools.info.gz /etc/info-dir
 fi
 
 %files
@@ -88,8 +88,8 @@ fi
 %doc {Changelog,README,Release.notes}.gz
 
 %attr(755,root,root) /usr/bin/*
-/usr/man/man[15]/*
-/usr/info/*
+%{_mandir}/man[15]/*
+%{_infodir}/*
 %config /etc/mtools.conf
 
 %changelog

@@ -62,7 +62,7 @@ autoconf
 LDFLAGS="-s"; export LDFLAGS
 %configure
 
-make MYCFLAGS="$RPM_OPT_FLAGS -Wall"
+%{__make} MYCFLAGS="$RPM_OPT_FLAGS -Wall"
 
 (makeinfo --force mtools.texi; touch mtools.*)
 strip mtools mkmanifest
@@ -71,7 +71,7 @@ strip mtools mkmanifest
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_prefix},%{_sysconfdir}}
 
-make install DESTDIR=$RPM_BUILD_ROOT
+%{__make} install DESTDIR=$RPM_BUILD_ROOT
 install %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}
 
 gzip -9nf $RPM_BUILD_ROOT{%{_infodir}/*,%{_mandir}/man{1,5}/*} \

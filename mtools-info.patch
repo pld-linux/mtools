@@ -10,8 +10,8 @@ diff -urN mtools-3.9.1/mtools.texi mtools-3.9.1.new/mtools.texi
 -END-INFO-DIR-ENTRY
 +@dircategory Miscellaneous:
 +@direntry
-+* Mtools: (mtools)			Mtools: utilities to access 
-+					DOS disks in Unix.
++* Mtools: (mtools).			Mtools: utilities to access 
++					DOS disks in Unix
 +@end direntry
  @end format
  @end ifinfo

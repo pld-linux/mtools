@@ -17,7 +17,7 @@ Patch2:		mtools-DESTDIR.patch
 URL:		http://www.tux.org/pub/tux/knaff/mtools/
 BuildRequires:	texinfo
 Prereq:		/usr/sbin/fix-info-dir
-BuildRoot:	/tmp/%{name}-%{version}-root
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_sysconfdir	/etc
 

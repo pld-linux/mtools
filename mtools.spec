@@ -15,7 +15,7 @@ Patch0:      mtools-info.patch
 Patch1:      mtools-mzip.patch
 URL:         http://www.tux.org/pub/tux/knaff/mtools/
 Prereq:      /sbin/install-info
-Buildroot:   /tmp/%{name}-%{version}-root
+BuildRoot:	/tmp/%{name}-%{version}-root
 
 %description
 Mtools is a collection of utilities to access MS-DOS disks from Unix without

@@ -52,6 +52,16 @@ sistemlerinden eriþilebilmesini saðlar. Win'95 tarzý uzun dosya
 isimlerini, OS/2 Xdf disklerini, ZIP/JAZ disklerini ve 2m disklerini
 destekler.
 
+%package floppyd
+Summary:	floppyd
+Group(de):	Applikationen/Datei
+Group(pl):	Aplikacje/Pliki
+Group:		Applications/System
+Requires:	%{name} = %{version}
+
+%description floppyd
+
+
 %prep
 %setup -q
 %patch0 -p1
@@ -71,9 +81,12 @@ strip mtools mkmanifest
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_prefix},%{_sysconfdir}}
+install -d $RPM_BUILD_ROOT%{_prefix}/X11R6/bin
 
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
 install %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}
+
+mv -f $RPM_BUILD_ROOT%{_bindir}/floppyd* $RPM_BUILD_ROOT%{_prefix}/X11R6/bin
 
 gzip -9nf Changelog README Release.notes
 
@@ -93,3 +106,6 @@ rm -rf $RPM_BUILD_ROOT
 %config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/mtools.conf
 %{_mandir}/man[15]/*
 %{_infodir}/*info*
+
+%files floppyd
+%attr(755,root,root) %{_prefix}/X11R6/bin/*

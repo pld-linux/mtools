@@ -95,7 +95,7 @@ Daemon para acesso remoto a um drive de disquete.
 %patch5 -p1
 
 %build
-autoconf
+%{__autoconf}
 %configure
 
 %{__make} MYCFLAGS="%{rpmcflags} -Wall"

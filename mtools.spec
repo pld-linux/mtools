@@ -51,7 +51,7 @@ disklerini, ZIP/JAZ disklerini ve 2m disklerini destekler.
 
 %build
 CFLAGS="$RPM_OPT_FLAGS -Wall" \
-./configure %{_target} \
+./configure %{_target_platform} \
 	--prefix=/usr \
 	--sysconfdir=/etc
 

@@ -1,6 +1,7 @@
---- mtools-3.9.1/Makefile.in~	Tue Mar 17 20:47:54 1998
-+++ mtools-3.9.1/Makefile.in	Thu Feb 10 14:07:34 2000
-@@ -154,14 +154,14 @@
+diff -Nur mtools-3.9.6.orig/Makefile.in mtools-3.9.6/Makefile.in
+--- mtools-3.9.6.orig/Makefile.in	Thu Jul  1 19:21:58 1999
++++ mtools-3.9.6/Makefile.in	Fri Dec 29 21:21:02 2000
+@@ -185,14 +185,14 @@
  
  # Don't cd, to avoid breaking install-sh references.
  install-info: info
@@ -16,10 +17,22 @@
 -	    $(INSTALL_DATA) $$i $(infodir)/`echo $$i | sed 's|^$(srcdir)/||'`; \
 +	    $(INSTALL_DATA) $$i $(DESTDIR)$(infodir)/`echo $$i | sed 's|^$(srcdir)/||'`; \
  	  done; \
- 	fi
+ 	fi; \
+ 	if [ -n "$(INSTALL_INFO)" ] ; then \
+@@ -219,51 +219,51 @@
  
-@@ -179,43 +179,43 @@
- maintainer-clean: distclean
+ 
+ $(bindir)/floppyd: floppyd
+-	$(top_srcdir)/mkinstalldirs $(bindir)
+-	$(INSTALL_PROGRAM) floppyd $(bindir)/floppyd
++	$(top_srcdir)/mkinstalldirs $(DESTDIR)$(bindir)
++	$(INSTALL_PROGRAM) floppyd $(DESTDIR)$(bindir)/floppyd
+ 
+ $(bindir)/floppyd_installtest: floppyd_installtest
+-	$(top_srcdir)/mkinstalldirs $(bindir)
+-	$(INSTALL_PROGRAM) floppyd_installtest $(bindir)/floppyd_installtest
++	$(top_srcdir)/mkinstalldirs $(DESTDIR)$(bindir)
++	$(INSTALL_PROGRAM) floppyd_installtest $(DESTDIR)$(bindir)/floppyd_installtest
  
  $(bindir)/mtools: mtools
 -	$(top_srcdir)/mkinstalldirs $(bindir)

@@ -1,5 +1,5 @@
 Summary:	Programs to access DOS disks w/o mounting them
-Summary(de):	Programme für den Zugriff auf DOS-Disks, ohne sie zu montieren 
+Summary(de):	Programme für den Zugriff auf DOS-Disks, ohne sie zu montieren
 Summary(fr):	Programmes pour accéder aux disques DOS sans avoir à les monter
 Summary(pl):	Dostêp do dysków DOSa bez montowania
 Summary(tr):	Baðlama (mount) yapmadan DOS disklerine eriþim saðlar
@@ -56,15 +56,20 @@ isimlerini, OS/2 Xdf disklerini, ZIP/JAZ disklerini ve 2m disklerini
 destekler.
 
 %package floppyd
-Summary:	ffloppyd - daemon for remote access to floppy drive
+Summary:	floppyd - daemon for remote access to floppy drive
 Group:		Applications/System
 Group(de):	Applikationen/System
 Group(pl):	Aplikacje/System
 Requires:	%{name} = %{version}
 
 %description floppyd
-floppy daemon for remote access to floppy drive floppyd_installtest -
+floppy daemon for remote access to floppy drive. floppyd_installtest -
 tests whether floppyd is installed and running
+
+%description floppyd -l pl
+Demon floppy do zdalnego dostêpu do napêdu dyskietek.
+floppyd_installtest - sprawdza, czy floppyd jest zainstalowany
+i dzia³a.
 
 %prep
 %setup -q

@@ -5,7 +5,7 @@ Summary(pl):	Dostêp do dysków DOSa bez montowania
 Summary(tr):	Baðlama (mount) yapmadan DOS disklerine eriþim saðlar
 Name:		mtools
 Version:	3.9.8
-Release:	1
+Release:	2
 License:	GPL
 Group:		Applications/File
 Group(de):	Applikationen/Datei
@@ -80,8 +80,8 @@ strip mtools mkmanifest
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_prefix},%{_sysconfdir}}
-install -d $RPM_BUILD_ROOT%{_prefix}/X11R6/bin
+install -d $RPM_BUILD_ROOT{%{_prefix},%{_sysconfdir}} \
+	$RPM_BUILD_ROOT%{_prefix}/X11R6/bin
 
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
 install %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}
@@ -104,8 +104,10 @@ rm -rf $RPM_BUILD_ROOT
 %doc *.gz
 %attr(755,root,root) %{_bindir}/*
 %config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/mtools.conf
-%{_mandir}/man[15]/*
+%{_mandir}/man[15]/m*
 %{_infodir}/*info*
 
 %files floppyd
+%defattr(644,root,root,755)
 %attr(755,root,root) %{_prefix}/X11R6/bin/*
+%{_mandir}/man[15]/f*

@@ -87,7 +87,7 @@ fi
 %defattr(644,root,root,755)
 %doc {Changelog,README,Release.notes}.gz
 
-%attr(755,root,root) /usr/bin/*
+%attr(755,root,root) %{_bindir}/*
 %{_mandir}/man[15]/*
 %{_infodir}/*
 %config /etc/mtools.conf

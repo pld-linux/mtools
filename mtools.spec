@@ -5,17 +5,21 @@ Summary(pl):	Dostêp do dysków DOSa bez montowania
 Summary(tr):	Baðlama (mount) yapmadan DOS disklerine eriþim saðlar
 Name:		mtools
 Version:	3.9.1
-Release:	4
-Copyright:	GPL
+Release:	5
+License:	GPL
 Group:		Utilities/File
 Group(pl):	Narzêdzia/Pliki
 Source0:	http://www.tux.org/pub/tux/knaff/mtools/%{name}-%{version}.tar.gz 
 Source1:	mtools.conf
 Patch0:		mtools-info.patch
 Patch1:		mtools-mzip.patch
+Patch2:		mtools-DESTDIR.patch
 URL:		http://www.tux.org/pub/tux/knaff/mtools/
+BuildRequires:	texinfo
 Prereq:		/usr/sbin/fix-info-dir
 BuildRoot:	/tmp/%{name}-%{version}-root
+
+%define		_sysconfdir	/etc
 
 %description
 Mtools is a collection of utilities to access MS-DOS disks from Unix without
@@ -48,34 +52,26 @@ disklerini, ZIP/JAZ disklerini ve 2m disklerini destekler.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
-autoheader
 autoconf
-CFLAGS="$RPM_OPT_FLAGS -Wall" \
-./configure %{_target_platform} \
-	--prefix=%{_prefix} \
-	--sysconfdir=/etc
+%configure
 
 make MYCFLAGS="$RPM_OPT_FLAGS -Wall"
 
 (makeinfo --force mtools.texi; touch mtools.*)
-
 strip mtools mkmanifest
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_prefix},/etc}
+install -d $RPM_BUILD_ROOT{%{_prefix},%{_sysconfdir}}
 
-make prefix=$RPM_BUILD_ROOT%{_prefix} install
+make install DESTDIR=$RPM_BUILD_ROOT
+install %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}
 
-install %{SOURCE1} $RPM_BUILD_ROOT/etc
-gzip -9nf $RPM_BUILD_ROOT%{_infodir}/* \
-	$RPM_BUILD_ROOT%{_mandir}/man{1,5}/* \
-	Changelog README Release.notes
-
-%clean
-rm -rf $RPM_BUILD_ROOT
+gzip -9nf $RPM_BUILD_ROOT{%{_infodir}/*,%{_mandir}/man{1,5}/*} \
+	Changelog README Release.notes TODO
 
 %post
 /usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
@@ -83,10 +79,14 @@ rm -rf $RPM_BUILD_ROOT
 %postun
 /usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
 
+%clean
+rm -rf $RPM_BUILD_ROOT
+
 %files
 %defattr(644,root,root,755)
-%doc {Changelog,README,Release.notes}.gz
+%doc {Changelog,README,Release.notes,TODO}.gz
 %attr(755,root,root) %{_bindir}/*
+
 %{_mandir}/man[15]/*
 %{_infodir}/*
-%config /etc/mtools.conf
+%config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/mtools.conf

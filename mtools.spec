@@ -7,19 +7,20 @@ Summary(pt_BR):	Programas para acessar discos DOS sem montá-los
 Summary(tr):	Baðlama (mount) yapmadan DOS disklerine eriþim saðlar
 Name:		mtools
 Version:	3.9.9
-Release:	0.pre1
+Release:	1
 License:	GPL
 Group:		Applications/File
-Source0:	http://mtools.linux.lu/%{name}-pre-%{version}.tar.gz
-# Source0-md5: 36e02924eeb1c6a8e31f0ae799a2777c
+Source0:	http://mtools.linux.lu/%{name}-%{version}.tar.bz2
+# Source0-md5:	6928ab4d6958118cde2060aee130b9e2
 Source1:	%{name}.conf
 Source2:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
-# Source2-md5: 7af7d462db97b53e4bfdc4aa1e41b516
+# Source2-md5:	7af7d462db97b53e4bfdc4aa1e41b516
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-DESTDIR.patch
 Patch2:		%{name}-paths.patch
 Patch3:		%{name}-no_libnsl_and_libbsd.patch
 Patch4:		%{name}-pmake.patch
+Patch5:		http://mtools.linux.lu/mtools-3.9.9-20030609.diff.gz
 URL:		http://mtools.linux.lu/
 BuildRequires:	autoconf
 BuildRequires:	texinfo
@@ -94,6 +95,7 @@ Daemon para acesso remoto a um drive de disquete.
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
+%patch5 -p1
 
 %build
 %{__autoconf}

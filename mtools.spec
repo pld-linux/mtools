@@ -14,7 +14,7 @@ Source1:	mtools.conf
 Patch0:		mtools-info.patch
 Patch1:		mtools-mzip.patch
 URL:		http://www.tux.org/pub/tux/knaff/mtools/
-Prereq:		/sbin/install-info
+Prereq:		/usr/sbin/fix-info-dir
 BuildRoot:	/tmp/%{name}-%{version}-root
 
 %description
@@ -78,12 +78,10 @@ gzip -9nf $RPM_BUILD_ROOT%{_infodir}/* \
 rm -rf $RPM_BUILD_ROOT
 
 %post
-/sbin/install-info %{_infodir}/mtools.info.gz /etc/info-dir
+/usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
 
 %preun
-if [ "$1" = 0 ]; then
-	/sbin/install-info --delete %{_infodir}/mtools.info.gz /etc/info-dir
-fi
+/usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
 
 %files
 %defattr(644,root,root,755)

@@ -17,6 +17,7 @@ Patch1:		%{name}-DESTDIR.patch
 Patch2:		%{name}-paths.patch
 Patch3:		%{name}-no_libnsl_and_libbsd.patch
 Patch4:		%{name}-ac250.patch
+Patch5:		%{name}-20010604.diff.gz
 URL:		http://www.tux.org/pub/tux/knaff/mtools/
 BuildRequires:	autoconf
 BuildRequires:	texinfo
@@ -54,14 +55,15 @@ isimlerini, OS/2 Xdf disklerini, ZIP/JAZ disklerini ve 2m disklerini
 destekler.
 
 %package floppyd
-Summary:	floppyd
-Group(de):	Applikationen/Datei
-Group(pl):	Aplikacje/Pliki
+Summary:	ffloppyd - daemon for remote access to floppy drive
 Group:		Applications/System
+Group(de):	Applikationen/System
+Group(pl):	Aplikacje/System
 Requires:	%{name} = %{version}
 
 %description floppyd
-
+floppy daemon for remote access to floppy drive floppyd_installtest -
+tests whether floppyd is installed and running
 
 %prep
 %setup -q
@@ -70,6 +72,7 @@ Requires:	%{name} = %{version}
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
+%patch5 -p1
 
 %build
 autoconf

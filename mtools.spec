@@ -65,7 +65,7 @@ destekler.
 autoconf
 %configure
 
-%{__make} MYCFLAGS="%{?debug:-O0 -g}%{!?debug:$RPM_OPT_FLAGS} -Wall"
+%{__make} MYCFLAGS="%{rpmcflags} -Wall"
 
 (makeinfo --force mtools.texi; touch mtools.*)
 strip mtools mkmanifest

@@ -2,7 +2,7 @@ Summary:	Programs to access DOS disks w/o mounting them
 Summary(de):	Programme für den Zugriff auf DOS-Disks, ohne sie zu montieren
 Summary(es):	Programas para acceder discos DOS sin montarlos
 Summary(fr):	Programmes pour accéder aux disques DOS sans avoir à les monter
-Summary(pl):	Dostêp do dysków DOSa bez montowania
+Summary(pl):	Dostêp do dysków DOS-a bez montowania
 Summary(pt_BR):	Programas para acessar discos DOS sem montá-los
 Summary(tr):	Baðlama (mount) yapmadan DOS disklerine eriþim saðlar
 Name:		mtools
@@ -52,8 +52,8 @@ les diques Xdf OS/2, les disques ZIP et JAZ et les disques 2m
 (stockant 1992k sur une disquette 3,5\").
 
 %description -l pl
-Mtools to zbiór narzêdzi udostêpniaj±cych Unixowi DOSowe dyski bez ich
-montowania. Obs³uguje d³ugie nazwy Win95, dyski Xdf z OS/2, dyski
+Mtools to zbiór narzêdzi udostêpniaj±cych Unixowi DOS-owe dyski bez
+ich montowania. Obs³uguje d³ugie nazwy Win95, dyski Xdf z OS/2, dyski
 ZIP/JAZ i dyski 2m (mieszcz±ce na 3.5-calowej dyskietce do 1992k).
 
 %description -l pt_BR

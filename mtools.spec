@@ -16,6 +16,7 @@ Patch0:		%{name}-info.patch
 Patch1:		%{name}-DESTDIR.patch
 Patch2:		%{name}-paths.patch
 Patch3:		%{name}-3.9.7-20000829.diff.gz
+Patch4:		%{name}-no_libnsl_and_libbsd.patch
 URL:		http://www.tux.org/pub/tux/knaff/mtools/
 BuildRequires:	autoconf
 BuildRequires:	texinfo
@@ -58,12 +59,13 @@ destekler.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 
 %build
 autoconf
 %configure
 
-%{__make} MYCFLAGS="$RPM_OPT_FLAGS -Wall"
+%{__make} MYCFLAGS="%{?debug:-O0 -g}%{!?debug:$RPM_OPT_FLAGS} -Wall"
 
 (makeinfo --force mtools.texi; touch mtools.*)
 strip mtools mkmanifest
@@ -75,7 +77,7 @@ install -d $RPM_BUILD_ROOT{%{_prefix},%{_sysconfdir}}
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
 install %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}
 
-gzip -9nf Changelog README Release.notes TODO
+gzip -9nf Changelog README Release.notes
 
 %post
 [ ! -x /usr/sbin/fix-info-dir ] || /usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
@@ -88,9 +90,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc {Changelog,README,Release.notes,TODO}.gz
+%doc *.gz
 %attr(755,root,root) %{_bindir}/*
-
-%{_mandir}/man[15]/*
-%{_infodir}/*
 %config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/mtools.conf
+%{_mandir}/man[15]/*
+%{_infodir}/*info*

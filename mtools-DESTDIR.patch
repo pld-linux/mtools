@@ -1,7 +1,7 @@
-diff -Nur mtools-3.9.6.orig/Makefile.in mtools-3.9.6/Makefile.in
---- mtools-3.9.6.orig/Makefile.in	Thu Jul  1 19:21:58 1999
-+++ mtools-3.9.6/Makefile.in	Fri Dec 29 21:21:02 2000
-@@ -185,14 +185,14 @@
+diff -Nru mtools-3.9.7/Makefile.in mtools-3.9.7.new/Makefile.in
+--- mtools-3.9.7/Makefile.in	Sun May 14 20:14:59 2000
++++ mtools-3.9.7.new/Makefile.in	Mon Feb 19 19:41:10 2001
+@@ -193,27 +193,27 @@
  
  # Don't cd, to avoid breaking install-sh references.
  install-info: info
@@ -19,7 +19,23 @@ diff -Nur mtools-3.9.6.orig/Makefile.in mtools-3.9.6/Makefile.in
  	  done; \
  	fi; \
  	if [ -n "$(INSTALL_INFO)" ] ; then \
-@@ -219,51 +219,51 @@
+ 		if [ -f $(infodir)/dir.info ] ; then \
+-			$(INSTALL_INFO) $(infodir)/mtools.info $(infodir)/dir.info; \
++			$(INSTALL_INFO) $(DESTDIR)$(infodir)/mtools.info $(DESTDIR)$(infodir)/dir.info; \
+ 		fi; \
+ 		if [ -f $(infodir)/dir ] ; then \
+-			$(INSTALL_INFO) $(infodir)/mtools.info $(infodir)/dir; \
++			$(INSTALL_INFO) $(DESTDIR)$(infodir)/mtools.info $(DESTDIR)$(infodir)/dir; \
+ 		fi; \
+ 	fi
+ 
+ uninstall-info:
+-	cd $(infodir) && rm -f mtools.info*
++	cd $(DESTDIR)$(infodir) && rm -f mtools.info*
+ 
+ install:	$(bindir)/mtools @BINFLOPPYD@ install-man install-links \
+ 		$(bindir)/mkmanifest install-scripts install-info
+@@ -227,51 +227,51 @@
  
  
  $(bindir)/floppyd: floppyd

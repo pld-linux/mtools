@@ -10,8 +10,6 @@ Version:	3.9.8
 Release:	5
 License:	GPL
 Group:		Applications/File
-Group(de):	Applikationen/Datei
-Group(pl):	Aplikacje/Pliki
 Source0:	http://www.tux.org/pub/tux/knaff/mtools/%{name}-%{version}.tar.gz
 Source1:	%{name}.conf
 Source2:	%{name}-non-english-man-pages.tar.bz2
@@ -73,8 +71,6 @@ destekler.
 Summary:	floppyd - daemon for remote access to floppy drive
 Summary(pt_BR):	Daemon para acesso remoto a um drive de disquete
 Group:		Applications/System
-Group(de):	Applikationen/System
-Group(pl):	Aplikacje/System
 Requires:	%{name} = %{version}
 
 %description floppyd

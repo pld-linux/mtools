@@ -53,7 +53,7 @@ les diques Xdf OS/2, les disques ZIP et JAZ et les disques 2m
 (stockant 1992k sur une disquette 3,5\").
 
 %description -l pl
-Mtools to zbiór narzêdzi udostêpniaj±cych Unixowi DOS-owe dyski bez
+Mtools to zbiór narzêdzi udostêpniaj±cych Uniksowi DOS-owe dyski bez
 ich montowania. Obs³uguje d³ugie nazwy Win95, dyski Xdf z OS/2, dyski
 ZIP/JAZ i dyski 2m (mieszcz±ce na 3.5-calowej dyskietce do 1992k).
 

@@ -1,11 +1,13 @@
 Summary:	Programs to access DOS disks w/o mounting them
 Summary(de):	Programme für den Zugriff auf DOS-Disks, ohne sie zu montieren
+Summary(es):	Programas para acceder discos DOS sin montarlos
 Summary(fr):	Programmes pour accéder aux disques DOS sans avoir à les monter
 Summary(pl):	Dostêp do dysków DOSa bez montowania
+Summary(pt_BR):	Programas para acessar discos DOS sem montá-los
 Summary(tr):	Baðlama (mount) yapmadan DOS disklerine eriþim saðlar
 Name:		mtools
 Version:	3.9.8
-Release:	4
+Release:	5
 License:	GPL
 Group:		Applications/File
 Group(de):	Applikationen/Datei
@@ -38,6 +40,12 @@ MS-DOS-Disketten, ohne daß diese montiert werden müssen. Es
 unterstützt Win'95-Dateinamen (lang), OS/2-Xdf-, ZIP/JAZ- und
 2m-Disketten (speichern bis zu 1992 KB auf einer HD 3 1/2-Diskette).
 
+%description -l es
+Mtools es una colección de utilitarios para acceder a discos MS-DOS en
+Unix sin montarlos. Soporta nombres largos de archivos estilo Win'95,
+discos OS/2 Xdf, discos ZIP/JAZ y discos 2m (almacena hasta 1992k en
+un disco 3 1/2 de alta densidad).
+
 %description -l fr
 Mtools est un ensemble d'utilitaires pour accéder aux disques MS-DOS
 depuis UNIX sans les monter. Il supporte les noms longs Windows 95,
@@ -49,6 +57,12 @@ Mtools to zbiór narzêdzi udostêpniaj±cych Unixowi DOSowe dyski bez ich
 montowania. Obs³uguje d³ugie nazwy Win95, dyski Xdf z OS/2, dyski
 ZIP/JAZ i dyski 2m (mieszcz±ce na 3.5-calowej dyskietce do 1992k).
 
+%description -l pt_BR
+Mtools é uma coleção de utilitários para acessar discos MS-DOS no Unix
+sem montá-los. Ele suporta nomes longos de arquivos estilo Win'95,
+discos OS/2 Xdf, discos ZIP/JAZ e discos 2m (armazena até 1992k em um
+disco 3 1/2 de alta densidade).
+
 %description -l tr
 mtools, MS-DOS disklerine baðlanmadan (mount edilmeden) UNIX
 sistemlerinden eriþilebilmesini saðlar. Win'95 tarzý uzun dosya
@@ -57,6 +71,7 @@ destekler.
 
 %package floppyd
 Summary:	floppyd - daemon for remote access to floppy drive
+Summary(pt_BR):	Daemon para acesso remoto a um drive de disquete
 Group:		Applications/System
 Group(de):	Applikationen/System
 Group(pl):	Aplikacje/System
@@ -68,8 +83,11 @@ tests whether floppyd is installed and running
 
 %description floppyd -l pl
 Demon floppy do zdalnego dostêpu do napêdu dyskietek.
-floppyd_installtest - sprawdza, czy floppyd jest zainstalowany
-i dzia³a.
+floppyd_installtest - sprawdza, czy floppyd jest zainstalowany i
+dzia³a.
+
+%description floppyd -l pt_BR
+Daemon para acesso remoto a um drive de disquete.
 
 %prep
 %setup -q

@@ -1,0 +1,60 @@
+--- mtools-3.9.9.old/Makefile.in	Sat Mar  1 08:45:38 2003
++++ mtools-3.9.9/Makefile.in	Sat Mar  1 08:57:18 2003
+@@ -193,8 +193,7 @@
+ 	$(TEXI2HTML) $<
+ 
+ # Don't cd, to avoid breaking install-sh references.
+-install-info: info
+-	$(top_srcdir)/mkinstalldirs $(DESTDIR)$(infodir)
++install-info: info installdirs
+ 	if test -f mtools.info; then \
+ 	  for i in mtools.info*; do \
+ 	    $(INSTALL_DATA) $$i $(DESTDIR)$(infodir)/$$i; \
+@@ -226,21 +225,22 @@
+ 	rm -f config.cache config.h config.status config.log Makefile
+ maintainer-clean: distclean
+ 
+-
+-$(bindir)/floppyd: floppyd
++installdirs:
+ 	$(top_srcdir)/mkinstalldirs $(DESTDIR)$(bindir)
++	$(top_srcdir)/mkinstalldirs $(DESTDIR)$(MAN1DIR)
++	$(top_srcdir)/mkinstalldirs $(DESTDIR)$(infodir)
++
++$(bindir)/floppyd: floppyd installdirs
+ 	$(INSTALL_PROGRAM) floppyd $(DESTDIR)$(bindir)/floppyd
+ 
+-$(bindir)/floppyd_installtest: floppyd_installtest
++$(bindir)/floppyd_installtest: floppyd_installtest installdirs
+ 	$(top_srcdir)/mkinstalldirs $(DESTDIR)$(bindir)
+ 	$(INSTALL_PROGRAM) floppyd_installtest $(DESTDIR)$(bindir)/floppyd_installtest
+ 
+-$(bindir)/mtools: mtools
+-	$(top_srcdir)/mkinstalldirs $(DESTDIR)$(bindir)
++$(bindir)/mtools: mtools installdirs
+ 	$(INSTALL_PROGRAM) mtools $(DESTDIR)$(bindir)/mtools
+ 
+-$(bindir)/mkmanifest: mkmanifest
+-	$(top_srcdir)/mkinstalldirs $(DESTDIR)$(bindir)
++$(bindir)/mkmanifest: mkmanifest installdirs
+ 	$(INSTALL_PROGRAM) mkmanifest $(DESTDIR)$(bindir)/mkmanifest
+ 
+ #$(ETCDIR)/mtools: mtools.etc
+@@ -255,7 +255,6 @@
+ 
+ ## "z" is the older version of "gz"; the name is just *too* short
+ install-scripts: $(bindir)/mtools
+-	@$(top_srcdir)/mkinstalldirs $(DESTDIR)$(bindir)
+ 	@for j in $(SCRIPTS) ; do \
+ 		$(INSTALL_PROGRAM) $(srcdir)/scripts/$$j $(DESTDIR)$(bindir)/$$j ; \
+ 		echo $(DESTDIR)$(bindir)/$$j ; \
+@@ -263,8 +262,7 @@
+ 	rm -f $(DESTDIR)$(bindir)/lz
+ 	$(LN_S) uz $(DESTDIR)$(bindir)/lz
+ 
+-install-man:
+-	@$(top_srcdir)/mkinstalldirs $(DESTDIR)$(MAN1DIR)
++install-man: installdirs
+ 	@for j in $(MAN1); do \
+ 		$(INSTALL_DATA) $(srcdir)/$$j $(DESTDIR)$(MAN1DIR)/$$j ; \
+ 		echo $(DESTDIR)$(MAN1DIR)/$$j ; \

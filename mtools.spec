@@ -12,9 +12,8 @@ Group(pl):	Narzêdzia/Pliki
 Source0:	http://www.tux.org/pub/tux/knaff/mtools/%{name}-%{version}.tar.gz
 Source1:	mtools.conf
 Patch0:		mtools-info.patch
-Patch1:		mtools-mzip.patch
-Patch2:		mtools-DESTDIR.patch
-Patch3:		mtools-paths.patch
+Patch1:		mtools-DESTDIR.patch
+Patch2:		mtools-paths.patch
 URL:		http://www.tux.org/pub/tux/knaff/mtools/
 BuildRequires:	texinfo
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -55,7 +54,6 @@ destekler.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
-%patch3 -p1
 
 %build
 autoconf

@@ -13,7 +13,7 @@ Group:		Applications/File
 Source0:	http://mtools.linux.lu/%{name}-pre-%{version}.tar.gz
 # Source0-md5: 36e02924eeb1c6a8e31f0ae799a2777c
 Source1:	%{name}.conf
-Source2:	%{name}-non-english-man-pages.tar.bz2
+Source2:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
 # Source2-md5: 7af7d462db97b53e4bfdc4aa1e41b516
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-DESTDIR.patch

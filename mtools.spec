@@ -59,7 +59,6 @@ destekler.
 
 %build
 autoconf
-LDFLAGS="-s"; export LDFLAGS
 %configure
 
 %{__make} MYCFLAGS="$RPM_OPT_FLAGS -Wall"
@@ -74,8 +73,7 @@ install -d $RPM_BUILD_ROOT{%{_prefix},%{_sysconfdir}}
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
 install %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}
 
-gzip -9nf $RPM_BUILD_ROOT{%{_infodir}/*,%{_mandir}/man{1,5}/*} \
-	Changelog README Release.notes TODO
+gzip -9nf Changelog README Release.notes TODO
 
 %post
 [ ! -x /usr/sbin/fix-info-dir ] || /usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1

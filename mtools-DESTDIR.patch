@@ -1,0 +1,82 @@
+--- mtools-3.9.1/Makefile.in~	Tue Mar 17 20:47:54 1998
++++ mtools-3.9.1/Makefile.in	Thu Feb 10 14:07:34 2000
+@@ -154,14 +154,14 @@
+ 
+ # Don't cd, to avoid breaking install-sh references.
+ install-info: info
+-	$(top_srcdir)/mkinstalldirs $(infodir)
++	$(top_srcdir)/mkinstalldirs $(DESTDIR)$(infodir)
+ 	if test -f mtools.info; then \
+ 	  for i in mtools.info*; do \
+-	    $(INSTALL_DATA) $$i $(infodir)/$$i; \
++	    $(INSTALL_DATA) $$i $(DESTDIR)$(infodir)/$$i; \
+ 	  done; \
+ 	else \
+ 	  for i in $(srcdir)/mtools.info*; do \
+-	    $(INSTALL_DATA) $$i $(infodir)/`echo $$i | sed 's|^$(srcdir)/||'`; \
++	    $(INSTALL_DATA) $$i $(DESTDIR)$(infodir)/`echo $$i | sed 's|^$(srcdir)/||'`; \
+ 	  done; \
+ 	fi
+ 
+@@ -179,43 +179,43 @@
+ maintainer-clean: distclean
+ 
+ $(bindir)/mtools: mtools
+-	$(top_srcdir)/mkinstalldirs $(bindir)
+-	$(INSTALL_PROGRAM) mtools $(bindir)/mtools
++	$(top_srcdir)/mkinstalldirs $(DESTDIR)$(bindir)
++	$(INSTALL_PROGRAM) mtools $(DESTDIR)$(bindir)/mtools
+ 
+ $(bindir)/mkmanifest: mkmanifest
+-	$(top_srcdir)/mkinstalldirs $(bindir)
+-	$(INSTALL_PROGRAM) mkmanifest $(bindir)/mkmanifest
++	$(top_srcdir)/mkinstalldirs $(DESTDIR)$(bindir)
++	$(INSTALL_PROGRAM) mkmanifest $(DESTDIR)$(bindir)/mkmanifest
+ 
+ #$(ETCDIR)/mtools: mtools.etc
+ #	cp mtools.etc $(ETCDIR)/mtools
+ 
+ install-links: $(bindir)/mtools
+ 	@for j in $(LINKS); do \
+-		rm -f $(bindir)/$$j ; \
+-		$(LN_S) mtools $(bindir)/$$j ; \
+-		echo $(bindir)/$$j ; \
++		rm -f $(DESTDIR)$(bindir)/$$j ; \
++		$(LN_S) mtools $(DESTDIR)$(bindir)/$$j ; \
++		echo $(DESTDIR)$(bindir)/$$j ; \
+ 	done
+ 
+ ## "z" is the older version of "gz"; the name is just *too* short
+ install-scripts: $(bindir)/mtools
+-	@$(top_srcdir)/mkinstalldirs $(bindir)
++	@$(top_srcdir)/mkinstalldirs $(DESTDIR)$(bindir)
+ 	@for j in $(SCRIPTS) ; do \
+-		$(INSTALL_PROGRAM) $(srcdir)/scripts/$$j $(bindir)/$$j ; \
+-		echo $(bindir)/$$j ; \
++		$(INSTALL_PROGRAM) $(srcdir)/scripts/$$j $(DESTDIR)$(bindir)/$$j ; \
++		echo $(DESTDIR)$(bindir)/$$j ; \
+ 	done
+-	rm -f $(bindir)/lz
+-	$(LN_S) uz $(bindir)/lz
++	rm -f $(DESTDIR)$(bindir)/lz
++	$(LN_S) uz $(DESTDIR)$(bindir)/lz
+ 
+ install-man:
+-	@$(top_srcdir)/mkinstalldirs $(MAN1DIR)
++	@$(top_srcdir)/mkinstalldirs $(DESTDIR)$(MAN1DIR)
+ 	@for j in $(MAN1); do \
+-		$(INSTALL_DATA) $(srcdir)/$$j $(MAN1DIR)/$$j ; \
+-		echo $(MAN1DIR)/$$j ; \
++		$(INSTALL_DATA) $(srcdir)/$$j $(DESTDIR)$(MAN1DIR)/$$j ; \
++		echo $(DESTDIR)$(MAN1DIR)/$$j ; \
+ 	done
+-	@$(top_srcdir)/mkinstalldirs $(MAN5DIR)
++	@$(top_srcdir)/mkinstalldirs $(DESTDIR)$(MAN5DIR)
+ 	@for j in $(MAN5); do \
+-		$(INSTALL_DATA) $(srcdir)/$$j $(MAN5DIR)/$$j ; \
+-		echo $(MAN5DIR)/$$j ; \
++		$(INSTALL_DATA) $(srcdir)/$$j $(DESTDIR)$(MAN5DIR)/$$j ; \
++		echo $(DESTDIR)$(MAN5DIR)/$$j ; \
+ 	done
+ 
+ uninstall-bin:

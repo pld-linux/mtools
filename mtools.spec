@@ -74,7 +74,7 @@ fi
 %files
 %defattr(644, root, root, 755)
 %config /etc/mtools.conf
-%doc Changelog README Release.notes mtools.texi
+%doc Changelog README Release.notes
 %attr(755, root, root) /usr/bin/*
 %attr(644, root,  man) /usr/man/man[15]/*
 /usr/info/*

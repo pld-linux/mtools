@@ -81,7 +81,6 @@ autoconf
 %{__make} MYCFLAGS="%{rpmcflags} -Wall"
 
 (makeinfo --force mtools.texi; touch mtools.*)
-strip mtools mkmanifest
 
 %install
 rm -rf $RPM_BUILD_ROOT

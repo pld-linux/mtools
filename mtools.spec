@@ -7,7 +7,7 @@ Summary(pt_BR):	Programas para acessar discos DOS sem montá-los
 Summary(tr):	Baðlama (mount) yapmadan DOS disklerine eriþim saðlar
 Name:		mtools
 Version:	3.9.9
-Release:	1
+Release:	2
 License:	GPL
 Group:		Applications/File
 Source0:	http://mtools.linux.lu/%{name}-%{version}.tar.bz2
@@ -21,6 +21,7 @@ Patch2:		%{name}-paths.patch
 Patch3:		%{name}-no_libnsl_and_libbsd.patch
 Patch4:		%{name}-pmake.patch
 Patch5:		http://mtools.linux.lu/mtools-3.9.9-20030609.diff.gz
+Patch6:		%{name}-alpha.patch
 URL:		http://mtools.linux.lu/
 BuildRequires:	autoconf
 BuildRequires:	texinfo
@@ -94,6 +95,7 @@ Daemon para acesso remoto a um drive de disquete.
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
+%patch6 -p1
 
 %build
 %{__autoconf}
@@ -115,8 +117,6 @@ install -d $RPM_BUILD_ROOT{%{_prefix},%{_sysconfdir}} \
 
 install %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}
 
-mv -f $RPM_BUILD_ROOT%{_bindir}/floppyd* $RPM_BUILD_ROOT%{_prefix}/X11R6/bin
-
 bzip2 -dc %{SOURCE2} | tar xf - -C $RPM_BUILD_ROOT%{_mandir}
 
 %clean
@@ -131,7 +131,9 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc Changelog README Release.notes
-%attr(755,root,root) %{_bindir}/*
+%attr(755,root,root) %{_bindir}/m*
+%attr(755,root,root) %{_bindir}/tgz
+%attr(755,root,root) %{_bindir}/uz
 %config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/mtools.conf
 %{_mandir}/man[15]/m*
 %lang(de) %{_mandir}/de/man[15]/m*
@@ -144,5 +146,5 @@ rm -rf $RPM_BUILD_ROOT
 
 %files floppyd
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_prefix}/X11R6/bin/*
+%attr(755,root,root) %{_bindir}/floppyd*
 %{_mandir}/man[15]/f*

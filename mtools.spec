@@ -1,20 +1,20 @@
-Summary:     programs to access DOS disks w/o mounting them
-Summary(de): Programme für den Zugriff auf DOS-Disks, ohne sie zu montieren 
-Summary(fr): programmes pour accéder aux disques DOS sans avoir à les monter
-Summary(pl): Dostêp do dysków DOSa bez montowania
-Summary(tr): Baðlama (mount) yapmadan DOS disklerine eriþim saðlar
-Name:        mtools
-Version:     3.9.1
-Release:     3
-Copyright:   GPL
-Group:       Utilities/File
-Group(pl):   Narzêdzia/Pliki
-Source0:     http://www.tux.org/pub/tux/knaff/mtools/%{name}-%{version}.tar.gz 
-Source1:     mtools.conf
-Patch0:      mtools-info.patch
-Patch1:      mtools-mzip.patch
-URL:         http://www.tux.org/pub/tux/knaff/mtools/
-Prereq:      /sbin/install-info
+Summary:	Programs to access DOS disks w/o mounting them
+Summary(de):	Programme für den Zugriff auf DOS-Disks, ohne sie zu montieren 
+Summary(fr):	Programmes pour accéder aux disques DOS sans avoir à les monter
+Summary(pl):	Dostêp do dysków DOSa bez montowania
+Summary(tr):	Baðlama (mount) yapmadan DOS disklerine eriþim saðlar
+Name:		mtools
+Version:	3.9.1
+Release:	3
+Copyright:	GPL
+Group:		Utilities/File
+Group(pl):	Narzêdzia/Pliki
+Source0:	http://www.tux.org/pub/tux/knaff/mtools/%{name}-%{version}.tar.gz 
+Source1:	mtools.conf
+Patch0:		mtools-info.patch
+Patch1:		mtools-mzip.patch
+URL:		http://www.tux.org/pub/tux/knaff/mtools/
+Prereq:		/sbin/install-info
 BuildRoot:	/tmp/%{name}-%{version}-root
 
 %description
@@ -50,9 +50,11 @@ disklerini, ZIP/JAZ disklerini ve 2m disklerini destekler.
 %patch1 -p1
 
 %build
+autoheader
+autoconf
 CFLAGS="$RPM_OPT_FLAGS -Wall" \
 ./configure %{_target_platform} \
-	--prefix=/usr \
+	--prefix=%{_prefix} \
 	--sysconfdir=/etc
 
 make MYCFLAGS="$RPM_OPT_FLAGS -Wall"
@@ -63,13 +65,13 @@ strip mtools mkmanifest
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT/{usr,etc}
+install -d $RPM_BUILD_ROOT{%{_prefix},/etc}
 
-make prefix=$RPM_BUILD_ROOT/usr install
+make prefix=$RPM_BUILD_ROOT%{_prefix} install
 
 install %{SOURCE1} $RPM_BUILD_ROOT/etc
 gzip -9nf $RPM_BUILD_ROOT%{_infodir}/* \
-	$RPM_BUILD_ROOT%{_mandir}/{man1,man5}/* \
+	$RPM_BUILD_ROOT%{_mandir}/man{1,5}/* \
 	Changelog README Release.notes
 
 %clean
@@ -86,7 +88,6 @@ fi
 %files
 %defattr(644,root,root,755)
 %doc {Changelog,README,Release.notes}.gz
-
 %attr(755,root,root) %{_bindir}/*
 %{_mandir}/man[15]/*
 %{_infodir}/*

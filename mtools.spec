@@ -5,7 +5,7 @@ Summary(pl):	Dostêp do dysków DOSa bez montowania
 Summary(tr):	Baðlama (mount) yapmadan DOS disklerine eriþim saðlar
 Name:		mtools
 Version:	3.9.8
-Release:	2
+Release:	3
 License:	GPL
 Group:		Applications/File
 Group(de):	Applikationen/Datei
@@ -16,6 +16,7 @@ Patch0:		%{name}-info.patch
 Patch1:		%{name}-DESTDIR.patch
 Patch2:		%{name}-paths.patch
 Patch3:		%{name}-no_libnsl_and_libbsd.patch
+Patch4:		%{name}-ac250.patch
 URL:		http://www.tux.org/pub/tux/knaff/mtools/
 BuildRequires:	autoconf
 BuildRequires:	texinfo
@@ -68,6 +69,7 @@ Requires:	%{name} = %{version}
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 
 %build
 autoconf

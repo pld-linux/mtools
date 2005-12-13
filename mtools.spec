@@ -132,7 +132,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/m*
 %attr(755,root,root) %{_bindir}/tgz
 %attr(755,root,root) %{_bindir}/uz
-%config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/mtools.conf
+%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/mtools.conf
 %{_mandir}/man[15]/m*
 %lang(de) %{_mandir}/de/man[15]/m*
 %lang(es) %{_mandir}/es/man[15]/m*

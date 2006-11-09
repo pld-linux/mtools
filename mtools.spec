@@ -72,7 +72,7 @@ Summary:	floppyd - daemon for remote access to floppy drive
 Summary(pl):	floppyd - serwer zdalnego dostêpu do stacji dyskietek
 Summary(pt_BR):	Daemon para acesso remoto a um drive de disquete
 Group:		Applications/System
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{version}-%{release}
 
 %description floppyd
 floppy daemon for remote access to floppy drive. floppyd_installtest -

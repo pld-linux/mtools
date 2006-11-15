@@ -24,6 +24,8 @@ URL:		http://mtools.linux.lu/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	texinfo
+BuildRequires:	xorg-lib-libX11-devel
+BuildRequires:	xorg-lib-libXau-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -99,7 +101,7 @@ cp /usr/share/automake/config.sub .
 %{__autoconf}
 %configure
 
-%{__make} \
+%{__make} all floppyd \
 	MYCFLAGS="%{rpmcflags} -Wall"
 
 makeinfo --force mtools.texi

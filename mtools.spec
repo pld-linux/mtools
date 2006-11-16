@@ -1,3 +1,4 @@
+%define _snap	20060626
 Summary:	Programs to access DOS disks w/o mounting them
 Summary(de):	Programme für den Zugriff auf DOS-Disks, ohne sie zu montieren
 Summary(es):	Programas para acceder discos DOS sin montarlos
@@ -7,7 +8,7 @@ Summary(pt_BR):	Programas para acessar discos DOS sem montá-los
 Summary(tr):	Baðlama (mount) yapmadan DOS disklerine eriþim saðlar
 Name:		mtools
 Version:	3.9.10
-Release:	1
+Release:	1.%{_snap}.1
 License:	GPL
 Group:		Applications/File
 Source0:	http://mtools.linux.lu/%{name}-%{version}.tar.bz2
@@ -15,11 +16,12 @@ Source0:	http://mtools.linux.lu/%{name}-%{version}.tar.bz2
 Source1:	%{name}.conf
 Source2:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
 # Source2-md5:	7af7d462db97b53e4bfdc4aa1e41b516
+Source3:	http://mtools.linux.lu/%{name}-%{version}-%{_snap}.diff.gz
+# Source3-md5:	346a58a582110339a573231189d51251
 Patch0:		%{name}-info.patch
-Patch1:		%{name}-DESTDIR.patch
-Patch2:		%{name}-paths.patch
-Patch3:		%{name}-no_libnsl_and_libbsd.patch
-Patch4:		%{name}-pmake.patch
+Patch1:		%{name}-paths.patch
+Patch2:		%{name}-no_libnsl_and_libbsd.patch
+Patch3:		%{name}-pmake.patch
 URL:		http://mtools.linux.lu/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -90,18 +92,18 @@ Daemon para acesso remoto a um drive de disquete.
 
 %prep
 %setup -q
+gunzip -c %{SOURCE3} | patch -p1
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
-%patch4 -p1
 
 %build
 cp /usr/share/automake/config.sub .
 %{__autoconf}
 %configure
 
-%{__make} all floppyd \
+%{__make} \
 	MYCFLAGS="%{rpmcflags} -Wall"
 
 makeinfo --force mtools.texi
@@ -117,7 +119,8 @@ install -d $RPM_BUILD_ROOT{%{_prefix},%{_sysconfdir}} \
 
 install %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}
 
-bzip2 -dc %{SOURCE2} | tar xf - -C $RPM_BUILD_ROOT%{_mandir}
+tar -xjf %{SOURCE2} -C $RPM_BUILD_ROOT%{_mandir}
+rm -f $RPM_BUILD_ROOT%{_mandir}/README.mtools-non-english-man-pages.gz
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -131,6 +134,7 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc Changelog README Release.notes
+%attr(755,root,root) %{_bindir}/amuFormat.sh
 %attr(755,root,root) %{_bindir}/m*
 %attr(755,root,root) %{_bindir}/tgz
 %attr(755,root,root) %{_bindir}/uz

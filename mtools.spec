@@ -1,11 +1,11 @@
 %define _snap	20060626
 Summary:	Programs to access DOS disks w/o mounting them
-Summary(de):	Programme für den Zugriff auf DOS-Disks, ohne sie zu montieren
-Summary(es):	Programas para acceder discos DOS sin montarlos
-Summary(fr):	Programmes pour accéder aux disques DOS sans avoir à les monter
-Summary(pl):	Dostêp do dysków DOS-a bez montowania
-Summary(pt_BR):	Programas para acessar discos DOS sem montá-los
-Summary(tr):	Baðlama (mount) yapmadan DOS disklerine eriþim saðlar
+Summary(de.UTF-8):   Programme fÃ¼r den Zugriff auf DOS-Disks, ohne sie zu montieren
+Summary(es.UTF-8):   Programas para acceder discos DOS sin montarlos
+Summary(fr.UTF-8):   Programmes pour accÃ©der aux disques DOS sans avoir Ã  les monter
+Summary(pl.UTF-8):   DostÄ™p do dyskÃ³w DOS-a bez montowania
+Summary(pt_BR.UTF-8):   Programas para acessar discos DOS sem montÃ¡-los
+Summary(tr.UTF-8):   BaÄŸlama (mount) yapmadan DOS disklerine eriÅŸim saÄŸlar
 Name:		mtools
 Version:	3.9.10
 Release:	1.%{_snap}.1
@@ -36,45 +36,45 @@ without mounting them. It supports Win'95 style long file names, OS/2
 Xdf disks, ZIP/JAZ disks and 2m disks (store up to 1992k on a high
 density 3 1/2 disk).
 
-%description -l de
+%description -l de.UTF-8
 Mtools ist eine Dienstprogrammsammlung zum Zugriff auf
-MS-DOS-Disketten, ohne daß diese montiert werden müssen. Es
-unterstützt Win'95-Dateinamen (lang), OS/2-Xdf-, ZIP/JAZ- und
+MS-DOS-Disketten, ohne daÃŸ diese montiert werden mÃ¼ssen. Es
+unterstÃ¼tzt Win'95-Dateinamen (lang), OS/2-Xdf-, ZIP/JAZ- und
 2m-Disketten (speichern bis zu 1992 KB auf einer HD 3 1/2-Diskette).
 
-%description -l es
-Mtools es una colección de utilitarios para acceder a discos MS-DOS en
+%description -l es.UTF-8
+Mtools es una colecciÃ³n de utilitarios para acceder a discos MS-DOS en
 Unix sin montarlos. Soporta nombres largos de archivos estilo Win'95,
 discos OS/2 Xdf, discos ZIP/JAZ y discos 2m (almacena hasta 1992k en
 un disco 3 1/2 de alta densidad).
 
-%description -l fr
-Mtools est un ensemble d'utilitaires pour accéder aux disques MS-DOS
+%description -l fr.UTF-8
+Mtools est un ensemble d'utilitaires pour accÃ©der aux disques MS-DOS
 depuis UNIX sans les monter. Il supporte les noms longs Windows 95,
 les diques Xdf OS/2, les disques ZIP et JAZ et les disques 2m
 (stockant 1992k sur une disquette 3,5\").
 
-%description -l pl
-Mtools to zbiór narzêdzi udostêpniaj±cych Uniksowi DOS-owe dyski bez
-ich montowania. Obs³uguje d³ugie nazwy Win95, dyski Xdf z OS/2, dyski
-ZIP/JAZ i dyski 2m (mieszcz±ce na 3.5-calowej dyskietce do 1992k).
+%description -l pl.UTF-8
+Mtools to zbiÃ³r narzÄ™dzi udostÄ™pniajÄ…cych Uniksowi DOS-owe dyski bez
+ich montowania. ObsÅ‚uguje dÅ‚ugie nazwy Win95, dyski Xdf z OS/2, dyski
+ZIP/JAZ i dyski 2m (mieszczÄ…ce na 3.5-calowej dyskietce do 1992k).
 
-%description -l pt_BR
-Mtools é uma coleção de utilitários para acessar discos MS-DOS no Unix
-sem montá-los. Ele suporta nomes longos de arquivos estilo Win'95,
-discos OS/2 Xdf, discos ZIP/JAZ e discos 2m (armazena até 1992k em um
+%description -l pt_BR.UTF-8
+Mtools Ã© uma coleÃ§Ã£o de utilitÃ¡rios para acessar discos MS-DOS no Unix
+sem montÃ¡-los. Ele suporta nomes longos de arquivos estilo Win'95,
+discos OS/2 Xdf, discos ZIP/JAZ e discos 2m (armazena atÃ© 1992k em um
 disco 3 1/2 de alta densidade).
 
-%description -l tr
-mtools, MS-DOS disklerine baðlanmadan (mount edilmeden) UNIX
-sistemlerinden eriþilebilmesini saðlar. Win'95 tarzý uzun dosya
+%description -l tr.UTF-8
+mtools, MS-DOS disklerine baÄŸlanmadan (mount edilmeden) UNIX
+sistemlerinden eriÅŸilebilmesini saÄŸlar. Win'95 tarzÄ± uzun dosya
 isimlerini, OS/2 Xdf disklerini, ZIP/JAZ disklerini ve 2m disklerini
 destekler.
 
 %package floppyd
 Summary:	floppyd - daemon for remote access to floppy drive
-Summary(pl):	floppyd - serwer zdalnego dostêpu do stacji dyskietek
-Summary(pt_BR):	Daemon para acesso remoto a um drive de disquete
+Summary(pl.UTF-8):   floppyd - serwer zdalnego dostÄ™pu do stacji dyskietek
+Summary(pt_BR.UTF-8):   Daemon para acesso remoto a um drive de disquete
 Group:		Applications/System
 Requires:	%{name} = %{version}-%{release}
 
@@ -82,12 +82,12 @@ Requires:	%{name} = %{version}-%{release}
 floppy daemon for remote access to floppy drive. floppyd_installtest -
 tests whether floppyd is installed and running
 
-%description floppyd -l pl
-Demon floppy do zdalnego dostêpu do napêdu dyskietek.
+%description floppyd -l pl.UTF-8
+Demon floppy do zdalnego dostÄ™pu do napÄ™du dyskietek.
 floppyd_installtest - sprawdza, czy floppyd jest zainstalowany i
-dzia³a.
+dziaÅ‚a.
 
-%description floppyd -l pt_BR
+%description floppyd -l pt_BR.UTF-8
 Daemon para acesso remoto a um drive de disquete.
 
 %prep

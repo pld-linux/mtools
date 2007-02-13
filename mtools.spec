@@ -1,11 +1,11 @@
 %define _snap	20060626
 Summary:	Programs to access DOS disks w/o mounting them
-Summary(de.UTF-8):   Programme für den Zugriff auf DOS-Disks, ohne sie zu montieren
-Summary(es.UTF-8):   Programas para acceder discos DOS sin montarlos
-Summary(fr.UTF-8):   Programmes pour accéder aux disques DOS sans avoir à les monter
-Summary(pl.UTF-8):   Dostęp do dysków DOS-a bez montowania
-Summary(pt_BR.UTF-8):   Programas para acessar discos DOS sem montá-los
-Summary(tr.UTF-8):   Bağlama (mount) yapmadan DOS disklerine erişim sağlar
+Summary(de.UTF-8):	Programme für den Zugriff auf DOS-Disks, ohne sie zu montieren
+Summary(es.UTF-8):	Programas para acceder discos DOS sin montarlos
+Summary(fr.UTF-8):	Programmes pour accéder aux disques DOS sans avoir à les monter
+Summary(pl.UTF-8):	Dostęp do dysków DOS-a bez montowania
+Summary(pt_BR.UTF-8):	Programas para acessar discos DOS sem montá-los
+Summary(tr.UTF-8):	Bağlama (mount) yapmadan DOS disklerine erişim sağlar
 Name:		mtools
 Version:	3.9.10
 Release:	1.%{_snap}.1
@@ -73,8 +73,8 @@ destekler.
 
 %package floppyd
 Summary:	floppyd - daemon for remote access to floppy drive
-Summary(pl.UTF-8):   floppyd - serwer zdalnego dostępu do stacji dyskietek
-Summary(pt_BR.UTF-8):   Daemon para acesso remoto a um drive de disquete
+Summary(pl.UTF-8):	floppyd - serwer zdalnego dostępu do stacji dyskietek
+Summary(pt_BR.UTF-8):	Daemon para acesso remoto a um drive de disquete
 Group:		Applications/System
 Requires:	%{name} = %{version}-%{release}
 

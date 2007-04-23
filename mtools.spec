@@ -1,4 +1,4 @@
-%define _snap	20060626
+%define _snap	20070411
 Summary:	Programs to access DOS disks w/o mounting them
 Summary(de.UTF-8):	Programme für den Zugriff auf DOS-Disks, ohne sie zu montieren
 Summary(es.UTF-8):	Programas para acceder discos DOS sin montarlos
@@ -17,7 +17,7 @@ Source1:	%{name}.conf
 Source2:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
 # Source2-md5:	7af7d462db97b53e4bfdc4aa1e41b516
 Source3:	http://mtools.linux.lu/%{name}-%{version}-%{_snap}.diff.gz
-# Source3-md5:	346a58a582110339a573231189d51251
+# Source3-md5:	587b808a689093f6fb64ab1990ffbef1
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-paths.patch
 Patch2:		%{name}-no_libnsl_and_libbsd.patch

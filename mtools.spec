@@ -1,4 +1,4 @@
-%define _snap	20070411
+%define _snap	20070601
 Summary:	Programs to access DOS disks w/o mounting them
 Summary(de.UTF-8):	Programme für den Zugriff auf DOS-Disks, ohne sie zu montieren
 Summary(es.UTF-8):	Programas para acceder discos DOS sin montarlos
@@ -7,17 +7,17 @@ Summary(pl.UTF-8):	Dostęp do dysków DOS-a bez montowania
 Summary(pt_BR.UTF-8):	Programas para acessar discos DOS sem montá-los
 Summary(tr.UTF-8):	Bağlama (mount) yapmadan DOS disklerine erişim sağlar
 Name:		mtools
-Version:	3.9.10
+Version:	3.9.11
 Release:	1.%{_snap}.1
 License:	GPL
 Group:		Applications/File
 Source0:	http://mtools.linux.lu/%{name}-%{version}.tar.bz2
-# Source0-md5:	0d0eb50a52eaf2e1921e1a61bab09be7
+# Source0-md5:	8508a3ea9b612a926f3ed0f229e6c21a
 Source1:	%{name}.conf
 Source2:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
 # Source2-md5:	7af7d462db97b53e4bfdc4aa1e41b516
 Source3:	http://mtools.linux.lu/%{name}-%{version}-%{_snap}.diff.gz
-# Source3-md5:	587b808a689093f6fb64ab1990ffbef1
+# Source3-md5:	a824c9785ab29ce093909f4841492c28
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-paths.patch
 Patch2:		%{name}-no_libnsl_and_libbsd.patch

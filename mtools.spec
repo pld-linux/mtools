@@ -1,4 +1,4 @@
-%define _snap	20070601
+%define snap	20071226
 Summary:	Programs to access DOS disks w/o mounting them
 Summary(de.UTF-8):	Programme für den Zugriff auf DOS-Disks, ohne sie zu montieren
 Summary(es.UTF-8):	Programas para acceder discos DOS sin montarlos
@@ -8,20 +8,23 @@ Summary(pt_BR.UTF-8):	Programas para acessar discos DOS sem montá-los
 Summary(tr.UTF-8):	Bağlama (mount) yapmadan DOS disklerine erişim sağlar
 Name:		mtools
 Version:	3.9.11
-Release:	1.%{_snap}.1
+Release:	1.%{snap}.1
 License:	GPL
 Group:		Applications/File
+#Source0Download: http://mtools.linux.lu/download.html
 Source0:	http://mtools.linux.lu/%{name}-%{version}.tar.bz2
 # Source0-md5:	8508a3ea9b612a926f3ed0f229e6c21a
 Source1:	%{name}.conf
 Source2:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
 # Source2-md5:	7af7d462db97b53e4bfdc4aa1e41b516
-Source3:	http://mtools.linux.lu/%{name}-%{version}-%{_snap}.diff.gz
-# Source3-md5:	a824c9785ab29ce093909f4841492c28
+#Source3Download: http://mtools.linux.lu/download.html
+Source3:	http://mtools.linux.lu/%{name}-%{version}-%{snap}.diff.gz
+# Source3-md5:	f1fd4a33b2e4493d5f88fbfe76fc55fd
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-paths.patch
 Patch2:		%{name}-no_libnsl_and_libbsd.patch
 Patch3:		%{name}-pmake.patch
+Patch4:		%{name}-make.patch
 URL:		http://mtools.linux.lu/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -97,6 +100,7 @@ gunzip -c %{SOURCE3} | patch -p1
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 
 %build
 cp /usr/share/automake/config.sub .
@@ -111,8 +115,7 @@ touch mtools.*
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_prefix},%{_sysconfdir}} \
-	$RPM_BUILD_ROOT%{_prefix}/X11R6/bin
+install -d $RPM_BUILD_ROOT{%{_prefix},%{_sysconfdir}}
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
@@ -125,30 +128,34 @@ rm -f $RPM_BUILD_ROOT%{_mandir}/README.mtools-non-english-man-pages.gz
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post	-p	/sbin/postshell
+%post	-p /sbin/postshell
 -/usr/sbin/fix-info-dir -c %{_infodir}
 
-%postun	-p	/sbin/postshell
+%postun	-p /sbin/postshell
 -/usr/sbin/fix-info-dir -c %{_infodir}
 
 %files
 %defattr(644,root,root,755)
 %doc Changelog README Release.notes
 %attr(755,root,root) %{_bindir}/amuFormat.sh
+%attr(755,root,root) %{_bindir}/lz
 %attr(755,root,root) %{_bindir}/m*
 %attr(755,root,root) %{_bindir}/tgz
 %attr(755,root,root) %{_bindir}/uz
 %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/mtools.conf
-%{_mandir}/man[15]/m*
-%lang(de) %{_mandir}/de/man[15]/m*
-%lang(es) %{_mandir}/es/man[15]/m*
-%lang(fi) %{_mandir}/fi/man[15]/m*
-%lang(fr) %{_mandir}/fr/man[15]/m*
-%lang(it) %{_mandir}/it/man[15]/m*
-%lang(pl) %{_mandir}/pl/man[15]/m*
-%{_infodir}/*info*
+%{_mandir}/man1/m*.1*
+%{_mandir}/man5/mtools.5*
+%lang(de) %{_mandir}/de/man1/m*.1*
+%lang(es) %{_mandir}/es/man1/m*.1*
+%lang(fi) %{_mandir}/fi/man1/m*.1*
+%lang(fr) %{_mandir}/fr/man1/m*.1*
+%lang(it) %{_mandir}/it/man1/m*.1*
+%lang(it) %{_mandir}/it/man5/mtools.5*
+%lang(pl) %{_mandir}/pl/man1/m*.1*
+%lang(pl) %{_mandir}/pl/man5/mtools.5*
+%{_infodir}/mtools.info*
 
 %files floppyd
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/floppyd*
-%{_mandir}/man[15]/f*
+%{_mandir}/man1/floppyd*.1*

@@ -7,7 +7,7 @@ Summary(pt_BR):	Programas para acessar discos DOS sem montá-los
 Summary(tr):	Baðlama (mount) yapmadan DOS disklerine eriþim saðlar
 Name:		mtools
 Version:	3.9.9
-Release:	3
+Release:	9
 License:	GPL
 Group:		Applications/File
 Source0:	http://mtools.linux.lu/%{name}-%{version}.tar.bz2

@@ -7,25 +7,20 @@ Summary(pl.UTF-8):	Dostęp do dysków DOS-a bez montowania
 Summary(pt_BR.UTF-8):	Programas para acessar discos DOS sem montá-los
 Summary(tr.UTF-8):	Bağlama (mount) yapmadan DOS disklerine erişim sağlar
 Name:		mtools
-Version:	3.9.11
-Release:	1.%{snap}.1
+Version:	4.0.10
+Release:	1
 License:	GPL
 Group:		Applications/File
 #Source0Download: http://mtools.linux.lu/download.html
-Source0:	http://mtools.linux.lu/%{name}-%{version}.tar.bz2
-# Source0-md5:	8508a3ea9b612a926f3ed0f229e6c21a
+Source0:	ftp://ftp.gnu.org/gnu/mtools/mtools-%{version}.tar.gz
+# Source0-md5:	3fe6227b3678bd5a13186290e7aa7671
 Source1:	%{name}.conf
 Source2:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
 # Source2-md5:	7af7d462db97b53e4bfdc4aa1e41b516
-#Source3Download: http://mtools.linux.lu/download.html
-Source3:	http://mtools.linux.lu/%{name}-%{version}-%{snap}.diff.gz
-# Source3-md5:	f1fd4a33b2e4493d5f88fbfe76fc55fd
-Patch0:		%{name}-info.patch
-Patch1:		%{name}-paths.patch
-Patch2:		%{name}-no_libnsl_and_libbsd.patch
-Patch3:		%{name}-pmake.patch
-Patch4:		%{name}-make.patch
-URL:		http://mtools.linux.lu/
+Patch0:		%{name}-paths.patch
+Patch1:		%{name}-no_libnsl_and_libbsd.patch
+Patch2:		%{name}-pmake.patch
+URL:		http://www.gnu.org/software/mtools/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	texinfo
@@ -95,12 +90,9 @@ Daemon para acesso remoto a um drive de disquete.
 
 %prep
 %setup -q
-gunzip -c %{SOURCE3} | patch -p1
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
-%patch3 -p1
-%patch4 -p1
 
 %build
 cp /usr/share/automake/config.sub .
@@ -136,7 +128,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc Changelog README Release.notes
+%doc NEWS README Release.notes
 %attr(755,root,root) %{_bindir}/amuFormat.sh
 %attr(755,root,root) %{_bindir}/lz
 %attr(755,root,root) %{_bindir}/m*

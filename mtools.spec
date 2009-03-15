@@ -12,8 +12,8 @@ Release:	1
 License:	GPL
 Group:		Applications/File
 #Source0Download: http://mtools.linux.lu/download.html
-Source0:	ftp://ftp.gnu.org/gnu/mtools/mtools-%{version}.tar.gz
-# Source0-md5:	3fe6227b3678bd5a13186290e7aa7671
+Source0:	ftp://ftp.gnu.org/gnu/mtools/mtools-%{version}.tar.bz2
+# Source0-md5:	750c2beba968a5d46dbaae24551a82b9
 Source1:	%{name}.conf
 Source2:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
 # Source2-md5:	7af7d462db97b53e4bfdc4aa1e41b516

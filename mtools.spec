@@ -1,4 +1,3 @@
-%define snap	20071226
 Summary:	Programs to access DOS disks w/o mounting them
 Summary(de.UTF-8):	Programme für den Zugriff auf DOS-Disks, ohne sie zu montieren
 Summary(es.UTF-8):	Programas para acceder discos DOS sin montarlos
@@ -7,13 +6,13 @@ Summary(pl.UTF-8):	Dostęp do dysków DOS-a bez montowania
 Summary(pt_BR.UTF-8):	Programas para acessar discos DOS sem montá-los
 Summary(tr.UTF-8):	Bağlama (mount) yapmadan DOS disklerine erişim sağlar
 Name:		mtools
-Version:	4.0.10
+Version:	4.0.11
 Release:	1
 License:	GPL
 Group:		Applications/File
 #Source0Download: http://mtools.linux.lu/download.html
 Source0:	ftp://ftp.gnu.org/gnu/mtools/mtools-%{version}.tar.bz2
-# Source0-md5:	750c2beba968a5d46dbaae24551a82b9
+# Source0-md5:	94a4dc40ebd8353628dd9d023727b7f5
 Source1:	%{name}.conf
 Source2:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
 # Source2-md5:	7af7d462db97b53e4bfdc4aa1e41b516

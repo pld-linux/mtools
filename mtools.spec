@@ -8,7 +8,7 @@ Summary(tr.UTF-8):	Bağlama (mount) yapmadan DOS disklerine erişim sağlar
 Name:		mtools
 Version:	4.0.13
 Release:	1
-License:	GPL
+License:	GPL v3+
 Group:		Applications/File
 #Source0Download: http://mtools.linux.lu/download.html
 Source0:	ftp://ftp.gnu.org/gnu/mtools/mtools-%{version}.tar.bz2

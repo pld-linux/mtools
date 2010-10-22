@@ -1,12 +1,11 @@
-diff -Nru mtools-3.9.7/configure.in mtools-3.9.7.new/configure.in
---- mtools-3.9.7/configure.in	Mon Feb 19 19:48:26 2001
-+++ mtools-3.9.7.new/configure.in	Mon Feb 19 19:49:11 2001
-@@ -338,8 +338,6 @@
+--- mtools-4.0.15/configure.in~	2010-10-17 18:39:15.000000000 +0300
++++ mtools-4.0.15/configure.in	2010-10-22 12:43:56.016683630 +0300
+@@ -357,8 +357,6 @@
  fi])
  
  AC_CHECK_LIB(socket,main)
--AC_CHECK_LIB(nsl,main)
+-dnl AC_CHECK_LIB(nsl,main)
 -AC_CHECK_LIB(bsd,main)
  AC_CHECK_HEADERS(sys/socket.h arpa/inet.h netdb.h)
  
- if test $use_floppyd = undef -a X$no_x = X ; then
+ if test X$use_floppyd = X -a X$no_x = X ; then

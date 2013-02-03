@@ -7,7 +7,7 @@ Summary(pt_BR.UTF-8):	Programas para acessar discos DOS sem montá-los
 Summary(tr.UTF-8):	Bağlama (mount) yapmadan DOS disklerine erişim sağlar
 Name:		mtools
 Version:	4.0.18
-Release:	1
+Release:	2
 License:	GPL v3+
 Group:		Applications/File
 Source0:	http://ftp.gnu.org/gnu/mtools/%{name}-%{version}.tar.lz
@@ -25,6 +25,7 @@ BuildRequires:	tar >= 1:1.22
 BuildRequires:	texinfo
 BuildRequires:	xorg-lib-libX11-devel
 BuildRequires:	xorg-lib-libXau-devel
+Requires:	iconv
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description

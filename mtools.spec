@@ -118,7 +118,7 @@ install -d $RPM_BUILD_ROOT{%{_prefix},%{_sysconfdir}}
 install %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}
 
 tar -xjf %{SOURCE2} -C $RPM_BUILD_ROOT%{_mandir}
-rm -f $RPM_BUILD_ROOT%{_mandir}/README.mtools-non-english-man-pages.gz
+%{__rm} $RPM_BUILD_ROOT%{_mandir}/README.mtools-non-english-man-pages
 
 %clean
 rm -rf $RPM_BUILD_ROOT

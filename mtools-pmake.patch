@@ -1,6 +1,6 @@
---- mtools-3.9.10/Makefile.in.orig	2006-11-16 10:46:14.932494500 +0000
-+++ mtools-3.9.10/Makefile.in	2006-11-16 11:52:29.305999750 +0000
-@@ -194,8 +194,7 @@
+--- mtools-4.0.27/Makefile.in.orig	2018-12-09 20:54:34.000000000 +0100
++++ mtools-4.0.27/Makefile.in	2021-04-17 12:40:26.765686898 +0200
+@@ -219,8 +219,7 @@ html: mtools.html mtools_toc.html
  	$(TEXI2HTML) $<
  
  # Don't cd, to avoid breaking install-sh references.
@@ -10,7 +10,7 @@
  	if test -f mtools.info; then \
  	  for i in mtools.info*; do \
  	    $(INSTALL_DATA) $$i $(DESTDIR)$(infodir)/$$i; \
-@@ -226,21 +225,22 @@
+@@ -247,21 +246,22 @@ distclean: clean texclean
  	rm -f config.cache config.h config.status config.log Makefile
  maintainer-clean: distclean
  
@@ -41,7 +41,7 @@
  	$(INSTALL_PROGRAM) mkmanifest $(DESTDIR)$(bindir)/mkmanifest
  
  #$(ETCDIR)/mtools: mtools.etc
-@@ -255,7 +254,6 @@
+@@ -276,7 +276,6 @@ install-links: $(DESTDIR)$(bindir)/mtool
  
  ## "z" is the older version of "gz"; the name is just *too* short
  install-scripts: $(DESTDIR)$(bindir)/mtools
@@ -49,9 +49,9 @@
  	@for j in $(SCRIPTS) ; do \
  		$(INSTALL_PROGRAM) $(srcdir)/scripts/$$j $(DESTDIR)$(bindir)/$$j ; \
  		echo $(DESTDIR)$(bindir)/$$j ; \
-@@ -263,8 +261,7 @@
+@@ -284,8 +283,7 @@ install-scripts: $(DESTDIR)$(bindir)/mto
  	rm -f $(DESTDIR)$(bindir)/lz
- 	$(LN_S) uz $(DESTDIR)$(bindir)/lz
+ 	cd $(DESTDIR)$(bindir) && $(LN_S) uz lz
  
 -install-man:
 -	@$(top_srcdir)/mkinstalldirs $(MAN1DIR)

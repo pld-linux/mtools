@@ -6,12 +6,12 @@ Summary(pl.UTF-8):	Dostęp do dysków DOS-a bez montowania
 Summary(pt_BR.UTF-8):	Programas para acessar discos DOS sem montá-los
 Summary(tr.UTF-8):	Bağlama (mount) yapmadan DOS disklerine erişim sağlar
 Name:		mtools
-Version:	4.0.27
+Version:	4.0.29
 Release:	1
 License:	GPL v3+
 Group:		Applications/File
 Source0:	https://ftp.gnu.org/gnu/mtools/%{name}-%{version}.tar.lz
-# Source0-md5:	1a0f30ce62a61b8bcc53228e0370ee9e
+# Source0-md5:	c7390205856c4cf22d26c65ad143eca1
 Source1:	%{name}.conf
 Source2:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
 # Source2-md5:	7af7d462db97b53e4bfdc4aa1e41b516

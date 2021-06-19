@@ -7,7 +7,7 @@ Summary(pt_BR.UTF-8):	Programas para acessar discos DOS sem montá-los
 Summary(tr.UTF-8):	Bağlama (mount) yapmadan DOS disklerine erişim sağlar
 Name:		mtools
 Version:	4.0.30
-Release:	1
+Release:	2
 License:	GPL v3+
 Group:		Applications/File
 Source0:	https://ftp.gnu.org/gnu/mtools/%{name}-%{version}.tar.lz
@@ -18,6 +18,7 @@ Source2:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-ma
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-no_libnsl_and_libbsd.patch
 Patch2:		%{name}-pmake.patch
+Patch3:		%{name}-x32.patch
 URL:		http://www.gnu.org/software/mtools/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -94,6 +95,7 @@ Daemon para acesso remoto a um drive de disquete.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
 cp /usr/share/automake/config.sub .

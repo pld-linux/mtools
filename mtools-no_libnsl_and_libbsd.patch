@@ -1,11 +1,11 @@
---- mtools-4.0.16/configure.in.orig	2010-10-18 08:02:41.000000000 +0200
-+++ mtools-4.0.16/configure.in	2011-04-20 20:04:34.989905509 +0200
-@@ -358,8 +358,6 @@
- fi])
+--- mtools-4.0.33/configure.in~	2021-07-17 14:49:55.000000000 +0200
++++ mtools-4.0.33/configure.in	2021-07-24 10:58:53.480031709 +0200
+@@ -98,8 +98,6 @@
  
+ dnl Check for platform-specific libraries
  AC_CHECK_LIB(socket,main)
--dnl AC_CHECK_LIB(nsl,getpwnam)
+-AX_LIB_SOCKET_NSL
 -AC_CHECK_LIB(bsd,main)
- AC_CHECK_HEADERS(sys/socket.h arpa/inet.h netdb.h)
  
- if test X$use_floppyd = X -a X$no_x = X ; then
+ dnl Checks for header files.
+ AC_HEADER_STDC

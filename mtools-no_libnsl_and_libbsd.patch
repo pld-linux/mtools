@@ -1,11 +1,16 @@
---- mtools-4.0.33/configure.in~	2021-07-17 14:49:55.000000000 +0200
-+++ mtools-4.0.33/configure.in	2021-07-24 10:58:53.480031709 +0200
-@@ -98,8 +98,6 @@
+--- mtools-4.0.40/configure.in~	2021-07-17 14:49:55.000000000 +0200
++++ mtools-4.0.40/configure.in	2021-07-24 10:58:53.480031709 +0200
+@@ -90,10 +90,9 @@ AC_DEFINE([USE_RAWTERM],1,[Define on non
+ dnl Checks for libraries.
  
- dnl Check for platform-specific libraries
- AC_CHECK_LIB(socket,main)
--AX_LIB_SOCKET_NSL
--AC_CHECK_LIB(bsd,main)
+ dnl AC_FUNC_GETMNTENT
+-AC_CHECK_LIB([sun],[getpwnam])
+-AC_CHECK_LIB(sun, getpwnam)
+-AC_CHECK_LIB(cam, cam_open_device)
+-AC_CHECK_LIB(iconv, iconv)
++AC_SEARCH_LIBS([getpwnam], [sun])
++AC_SEARCH_LIBS([cam_open_device], [cam])
++AC_SEARCH_LIBS([iconv], [iconv])
+ 
  
  dnl Checks for header files.
- AC_HEADER_STDC

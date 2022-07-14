@@ -1,7 +1,7 @@
---- mtools-4.0.30/configure.in.orig	2021-06-19 07:13:34.056342392 +0200
-+++ mtools-4.0.30/configure.in	2021-06-19 07:39:16.083031942 +0200
-@@ -288,7 +288,7 @@
- CF_SYS_ERRLIST
+--- mtools-4.0.40/configure.in.orig	2021-06-19 07:13:34.056342392 +0200
++++ mtools-4.0.40/configure.in	2021-06-19 07:39:16.083031942 +0200
+@@ -226,7 +226,7 @@ AC_CHECK_FUNCS(tzset gettimeofday)
+ AC_CHECK_DECLS([sys_errlist, optarg])
  
  [
 -host_os0=`echo $host_os | sed 's/-/_/g'`

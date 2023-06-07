@@ -1,16 +1,20 @@
---- mtools-4.0.40/configure.in~	2021-07-17 14:49:55.000000000 +0200
-+++ mtools-4.0.40/configure.in	2021-07-24 10:58:53.480031709 +0200
-@@ -90,10 +90,9 @@ AC_DEFINE([USE_RAWTERM],1,[Define on non
+--- mtools-4.0.43/configure.in.orig	2023-06-07 21:51:13.971120404 +0200
++++ mtools-4.0.43/configure.in	2023-06-07 21:53:13.417139976 +0200
+@@ -89,7 +89,7 @@ AC_DEFINE([USE_RAWTERM],1,[Define on non
  dnl Checks for libraries.
  
  dnl AC_FUNC_GETMNTENT
 -AC_CHECK_LIB([sun],[getpwnam])
--AC_CHECK_LIB(sun, getpwnam)
--AC_CHECK_LIB(cam, cam_open_device)
--AC_CHECK_LIB(iconv, iconv)
 +AC_SEARCH_LIBS([getpwnam], [sun])
-+AC_SEARCH_LIBS([cam_open_device], [cam])
-+AC_SEARCH_LIBS([iconv], [iconv])
+ 
+ case $host_os in
+  solaris*)
+@@ -100,7 +100,7 @@ case $host_os in
+     ;;
+ esac
+ 
+-AC_CHECK_LIB(iconv, iconv)
++AC_SEARCH_LIBS(iconv, iconv)
  
  
  dnl Checks for header files.

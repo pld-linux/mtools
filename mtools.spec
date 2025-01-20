@@ -6,12 +6,12 @@ Summary(pl.UTF-8):	Dostęp do dysków DOS-a bez montowania
 Summary(pt_BR.UTF-8):	Programas para acessar discos DOS sem montá-los
 Summary(tr.UTF-8):	Bağlama (mount) yapmadan DOS disklerine erişim sağlar
 Name:		mtools
-Version:	4.0.43
+Version:	4.0.47
 Release:	1
 License:	GPL v3+
 Group:		Applications/File
 Source0:	https://ftp.gnu.org/gnu/mtools/%{name}-%{version}.tar.lz
-# Source0-md5:	5d758c8cbdcecf8773cacb8f12f4938d
+# Source0-md5:	5e85e05b9b00b0df8838d37e8a19c683
 Source1:	%{name}.conf
 Source2:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
 # Source2-md5:	7af7d462db97b53e4bfdc4aa1e41b516
@@ -20,7 +20,7 @@ Patch1:		%{name}-no_libnsl_and_libbsd.patch
 Patch2:		%{name}-pmake.patch
 Patch3:		%{name}-x32.patch
 URL:		http://www.gnu.org/software/mtools/
-BuildRequires:	autoconf
+BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
 BuildRequires:	lzip
 BuildRequires:	tar >= 1:1.22
@@ -92,10 +92,10 @@ Daemon para acesso remoto a um drive de disquete.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
+%patch -P0 -p1
+%patch -P1 -p1
+%patch -P2 -p1
+%patch -P3 -p1
 
 %build
 cp /usr/share/automake/config.sub .

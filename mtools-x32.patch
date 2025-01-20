@@ -1,11 +1,11 @@
---- mtools-4.0.40/configure.in.orig	2021-06-19 07:13:34.056342392 +0200
-+++ mtools-4.0.40/configure.in	2021-06-19 07:39:16.083031942 +0200
-@@ -226,7 +226,7 @@ AC_CHECK_FUNCS(tzset gettimeofday)
- AC_CHECK_DECLS([sys_errlist, optarg])
+--- mtools-4.0.47/configure.ac.orig	2025-01-20 20:18:12.129456302 +0100
++++ mtools-4.0.47/configure.ac	2025-01-20 21:27:39.350213863 +0100
+@@ -240,7 +240,7 @@ AC_CHECK_DECLS([optarg])
  
  [
+ echo "Host OS=$host_os"
 -host_os0=`echo $host_os | sed 's/-/_/g'`
 +host_os0=`echo $host_os | sed 's/-gnu[a-z0-9]\+$/-gnu/; s/-/_/g'`
- host_os1=`echo $host_os0 | sed 's/\./_/g'`
- host_os2=`echo $host_os0 | sed 's/^\([^.]*\)\..*$/\1/g'`
- host_os3=`echo $host_os2 | sed 's/^\([^0-9]*\)[0-9]*$/\1/g'`
+ host_os1=`echo "$host_os0" | sed 's/\./_/g'`
+ host_os2=`echo "$host_os0" | sed 's/^\([^.]*\)\..*$/\1/g'`
+ host_os3=`echo "$host_os2" | sed 's/^\([^0-9]*\)[0-9]*$/\1/g'`

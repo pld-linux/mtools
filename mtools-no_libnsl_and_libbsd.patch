@@ -1,5 +1,5 @@
---- mtools-4.0.43/configure.in.orig	2023-06-07 21:51:13.971120404 +0200
-+++ mtools-4.0.43/configure.in	2023-06-07 21:53:13.417139976 +0200
+--- mtools-4.0.47/configure.ac.orig	2023-06-07 21:51:13.971120404 +0200
++++ mtools-4.0.47/configure.ac	2023-06-07 21:53:13.417139976 +0200
 @@ -89,7 +89,7 @@ AC_DEFINE([USE_RAWTERM],1,[Define on non
  dnl Checks for libraries.
  

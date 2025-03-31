@@ -1,6 +1,6 @@
---- mtools-4.0.27/Makefile.in.orig	2018-12-09 20:54:34.000000000 +0100
-+++ mtools-4.0.27/Makefile.in	2021-04-17 12:40:26.765686898 +0200
-@@ -219,8 +219,7 @@ html: mtools.html mtools_toc.html
+--- mtools-4.0.48/Makefile.in.orig	2025-02-05 13:30:43.000000000 +0100
++++ mtools-4.0.48/Makefile.in	2025-03-31 06:24:04.664125068 +0200
+@@ -208,8 +208,7 @@ html: mtools.html mtools_toc.html
  	$(TEXI2HTML) $<
  
  # Don't cd, to avoid breaking install-sh references.
@@ -10,11 +10,10 @@
  	if test -f mtools.info; then \
  	  for i in mtools.info*; do \
  	    $(INSTALL_DATA) $$i $(DESTDIR)$(infodir)/$$i; \
-@@ -247,21 +246,22 @@ distclean: clean texclean
- 	rm -f config.cache config.h config.status config.log Makefile
+@@ -237,20 +236,22 @@ distclean: clean texclean
  maintainer-clean: distclean
  
--
+ 
 -$(DESTDIR)$(bindir)/floppyd: floppyd
 +installdirs:
  	$(top_srcdir)/mkinstalldirs $(DESTDIR)$(bindir)
@@ -30,26 +29,26 @@
 +$(DESTDIR)$(bindir)/floppyd_installtest: floppyd_installtest installdirs
  	$(INSTALL_PROGRAM) floppyd_installtest $(DESTDIR)$(bindir)/floppyd_installtest
  
--$(DESTDIR)$(bindir)/mtools: mtools
+-$(DESTDIR)$(bindir)/mtools$(EXEEXT): mtools$(EXEEXT)
 -	$(top_srcdir)/mkinstalldirs $(DESTDIR)$(bindir)
-+$(DESTDIR)$(bindir)/mtools: mtools installdirs
- 	$(INSTALL_PROGRAM) mtools $(DESTDIR)$(bindir)/mtools
++$(DESTDIR)$(bindir)/mtools$(EXEEXT): mtools$(EXEEXT) installdirs
+ 	$(INSTALL_PROGRAM) mtools$(EXEEXT) $(DESTDIR)$(bindir)/mtools$(EXEEXT)
  
--$(DESTDIR)$(bindir)/mkmanifest: mkmanifest
+-$(DESTDIR)$(bindir)/mkmanifest$(EXEEXT): mkmanifest$(EXEEXT)
 -	$(top_srcdir)/mkinstalldirs $(DESTDIR)$(bindir)
-+$(DESTDIR)$(bindir)/mkmanifest: mkmanifest installdirs
- 	$(INSTALL_PROGRAM) mkmanifest $(DESTDIR)$(bindir)/mkmanifest
++$(DESTDIR)$(bindir)/mkmanifest$(EXEEXT): mkmanifest$(EXEEXT) installdirs
+ 	$(INSTALL_PROGRAM) mkmanifest$(EXEEXT) $(DESTDIR)$(bindir)/mkmanifest$(EXEEXT)
  
  #$(ETCDIR)/mtools: mtools.etc
-@@ -276,7 +276,6 @@ install-links: $(DESTDIR)$(bindir)/mtool
+@@ -265,7 +266,6 @@ install-links: $(DESTDIR)$(bindir)/mtool
  
  ## "z" is the older version of "gz"; the name is just *too* short
- install-scripts: $(DESTDIR)$(bindir)/mtools
+ install-scripts: $(DESTDIR)$(bindir)/mtools$(EXEEXT)
 -	@$(top_srcdir)/mkinstalldirs $(DESTDIR)$(bindir)
  	@for j in $(SCRIPTS) ; do \
  		$(INSTALL_PROGRAM) $(srcdir)/scripts/$$j $(DESTDIR)$(bindir)/$$j ; \
  		echo $(DESTDIR)$(bindir)/$$j ; \
-@@ -284,8 +283,7 @@ install-scripts: $(DESTDIR)$(bindir)/mto
+@@ -273,8 +273,7 @@ install-scripts: $(DESTDIR)$(bindir)/mto
  	rm -f $(DESTDIR)$(bindir)/lz
  	cd $(DESTDIR)$(bindir) && $(LN_S) uz lz
  

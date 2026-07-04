@@ -7,7 +7,7 @@ Summary(pt_BR.UTF-8):	Programas para acessar discos DOS sem montá-los
 Summary(tr.UTF-8):	Bağlama (mount) yapmadan DOS disklerine erişim sağlar
 Name:		mtools
 Version:	4.0.49
-Release:	1
+Release:	2
 License:	GPL v3+
 Group:		Applications/File
 Source0:	https://ftp.gnu.org/gnu/mtools/%{name}-%{version}.tar.lz
@@ -119,6 +119,10 @@ install -d $RPM_BUILD_ROOT{%{_prefix},%{_sysconfdir}}
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+# filename must match NAME mtools.conf(5) or man-db corrupts its index
+%{__mv} $RPM_BUILD_ROOT%{_mandir}/man5/mtools.5 $RPM_BUILD_ROOT%{_mandir}/man5/mtools.conf.5
+echo '.so man5/mtools.conf.5' > $RPM_BUILD_ROOT%{_mandir}/man5/mtools.5
+
 install %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}
 
 tar -xjf %{SOURCE2} -C $RPM_BUILD_ROOT%{_mandir}
@@ -144,6 +148,7 @@ rm -rf $RPM_BUILD_ROOT
 %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/mtools.conf
 %{_mandir}/man1/m*.1*
 %{_mandir}/man5/mtools.5*
+%{_mandir}/man5/mtools.conf.5*
 %lang(de) %{_mandir}/de/man1/m*.1*
 %lang(es) %{_mandir}/es/man1/m*.1*
 %lang(fi) %{_mandir}/fi/man1/m*.1*
